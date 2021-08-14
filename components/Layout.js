@@ -1,22 +1,51 @@
 import React from 'react';
 import Head from 'next/head';
-import { AppBar, Toolbar, Typography, Container } from '@material-ui/core';
-
+import NextLink from 'next/link';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Link,
+} from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@material-ui/styles';
 import useStyles from '../utils/styles';
-function Layout({ children }) {
+function Layout({ title, description, children }) {
+  const theme = createTheme({
+    typography: {
+      h1: {
+        fontSize: '1.6rem',
+        fontWeight: 400,
+        margin: '1rem 0',
+      },
+    },
+  });
   const classes = useStyles();
   return (
     <div>
       <Head>
-        <title>Next Amazon</title>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
+        <title>{title ? `${title} - Next Amazon` : 'Next Amazon'}</title>
+        {description && <meta name="description" content={description} />}
       </Head>
+      <ThemeProvider theme ={theme}></ThemeProvider>
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
-          <Typography>Amazon</Typography>
+          <NextLink href="/" passHref>
+            {/* <Link> */}
+            <Typography className={classes.brand}>Next Amazon</Typography>
+            {/* </Link> */}
+          </NextLink>
+          <div className={classes.grow}></div>
+          <div>
+            <NextLink href="/cart" passHref>
+              {/* <Link>Cart</Link> */}
+              Cart
+            </NextLink>
+            <NextLink href="/login" passHref>
+              {/* <Link>Login</Link> */}
+              Login
+            </NextLink>
+          </div>
         </Toolbar>
       </AppBar>
       <Container className={classes.main}>{children}</Container>
