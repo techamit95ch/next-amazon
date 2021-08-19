@@ -1,7 +1,7 @@
 export default {
   products: [
     {
-      _id: 1,
+      id: 1,
       name: 'Free Size Shirt',
       slug:'free_size_shirt_1',
       category: 'Shirt',
@@ -14,7 +14,7 @@ export default {
       description: 'A popular shirt',
     },
     {
-      _id: 2,
+      id: 2,
       name: 'Fit Size Shirt',
       slug:'fit_size_shirt_2',
 
@@ -28,7 +28,7 @@ export default {
       description: 'A popular shirt',
     },
     {
-      _id: 3,
+      id: 3,
       name: 'Small Size Shirt',
       slug:'small_size_shirt_3',
 
@@ -42,7 +42,7 @@ export default {
       description: 'A popular shirt',
     },
     {
-      _id: 4,
+      id: 4,
       name: 'Small Size Shirt',
       slug:'small_size_shirt_4',
 
@@ -56,7 +56,7 @@ export default {
       description: 'A popular shirt',
     },
     {
-      _id: 5,
+      id: 5,
       name: 'Small Size Shirt',
       slug:'small_size_shirt_5',
 
@@ -70,7 +70,7 @@ export default {
       description: 'A popular shirt',
     },
     {
-      _id: 6,
+      id: 6,
       name: 'Small Size Shirt',
       slug:'small_size_shirt_6',
 
@@ -84,7 +84,7 @@ export default {
       description: 'A popular shirt',
     },
     {
-      _id: 7,
+      id: 7,
       name: 'Small Size Shirt',
       slug:'small_size_shirt_7',
 
