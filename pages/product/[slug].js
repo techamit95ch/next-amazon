@@ -45,7 +45,7 @@ export default function ProductScreen() {
               <List>
                 <ListItem>
                   {' '}
-                  <Typography type="h1"> {product.name} </Typography>
+                  <Typography type="h1" variant="h1"> {product.name} </Typography>
                 </ListItem>
                 <ListItem>
                   {' '}

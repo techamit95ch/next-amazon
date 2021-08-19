@@ -16,6 +16,7 @@
     "@material-ui/lab": "^5.0.0-alpha.42",
     "@material-ui/styled-engine-sc": "^5.0.0-beta.1",
     "@material-ui/styles": "^4.11.4",
+    "js-cookie": "^3.0.0",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",

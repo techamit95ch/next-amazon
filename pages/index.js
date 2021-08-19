@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import NextLink from 'next/link';
 
-import styles from '../styles/Home.module.css';
+// import styles from '../styles/Home.module.css';
 import Layout from './../components/Layout';
 
 import {
@@ -19,13 +19,12 @@ import data from '../utils/data';
 export default function Home() {
   // console.log(data);
   return (
-    <>
       <Layout>
-        <>
+        
           <h1>Products</h1>
           <Grid container spacing={3}>
             {data.products.map((product) => (
-              <>
+              
                 <Grid item md={4} key={product._id}>
                   <Card>
                     <NextLink href={`/product/${product.slug}`} passHref>
@@ -35,6 +34,7 @@ export default function Home() {
                           image={product.image}
                           title={product.name}
                           height={350}
+                          width={350}
                         ></CardMedia>
                         <CardContent>
                           <Typography>{product.name}</Typography>
@@ -51,11 +51,11 @@ export default function Home() {
                     </CardActions>
                   </Card>
                 </Grid>
-              </>
+              
             ))}
           </Grid>
-        </>
+        
       </Layout>
-    </>
+    
   );
 }
