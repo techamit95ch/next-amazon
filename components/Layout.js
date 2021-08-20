@@ -9,7 +9,9 @@ import {
   Link,
   CssBaseline,
   Switch,
-  Grid,List,ListItem
+  Grid,
+  List,
+  ListItem,
 } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
@@ -19,7 +21,7 @@ import Box from '@material-ui/core/Box';
 import useStyles from '../utils/styles';
 import Cookies from 'js-cookie';
 import { Store } from '../utils/Store';
-function Layout({ page,title, description, children }) {
+function Layout({ page, title, description, children }) {
   const { state, dispatch } = useContext(Store);
   const { darkMode } = state;
   const [ready, setReady] = React.useState(false);
@@ -76,7 +78,6 @@ function Layout({ page,title, description, children }) {
     Cookies.set('darkMode', newDarkMode ? 'ON' : 'OFF');
   };
   if (!ready) {
-    
     return (
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
@@ -85,88 +86,76 @@ function Layout({ page,title, description, children }) {
         </Box>
 
         <Container>
-          {page==='home' &&(
+          {page === 'home' && (
             <>
-            <Skeleton width="15%" height={50} animation="wave" />
-          <Grid container wrap="nowrap">
-            <Box key={1} sx={{ width: 400, marginRight: 0.5, my: 5 }}>
-              <Skeleton
-                variant="rectangular"
-                width={350}
-                height={350}
-                animation="wave"
-              />
-            </Box>
-            <Box key={2} sx={{ width: 400, marginRight: 0.5, my: 5 }}>
-              <Skeleton
-                variant="rectangular"
-                width={350}
-                height={350}
-                animation="wave"
-              />
-            </Box>
-            <Box key={3} sx={{ width: 400, marginRight: 0.5, my: 5 }}>
-              <Skeleton
-                variant="rectangular"
-                width={350}
-                height={350}
-                animation="wave"
-              />
-            </Box>
-          </Grid>
+              <Skeleton width="15%" height={50} animation="wave" />
+              <Grid container wrap="nowrap">
+                <Box key={1} sx={{ width: 400, marginRight: 0.5, my: 5 }}>
+                  <Skeleton
+                    variant="rectangular"
+                    width={350}
+                    height={350}
+                    animation="wave"
+                  />
+                </Box>
+                <Box key={2} sx={{ width: 400, marginRight: 0.5, my: 5 }}>
+                  <Skeleton
+                    variant="rectangular"
+                    width={350}
+                    height={350}
+                    animation="wave"
+                  />
+                </Box>
+                <Box key={3} sx={{ width: 400, marginRight: 0.5, my: 5 }}>
+                  <Skeleton
+                    variant="rectangular"
+                    width={350}
+                    height={350}
+                    animation="wave"
+                  />
+                </Box>
+              </Grid>
             </>
           )}
-          {
-            page==='slug'&& (
-              <>
+          {page === 'slug' && (
+            <>
               <div className={classes.section}>
-              <Skeleton width="15%" height={20} animation="wave" />
+                <Skeleton width="15%" height={20} animation="wave" />
               </div>
               <Grid container spacing={1}>
-              <Grid item md={6} xs={12}>
-              <Skeleton
-                variant="rectangular"
-                width={480}
-                height={500}
-                animation="wave"
-              />
+                <Grid item md={6} xs={12}>
+                  <Skeleton
+                    variant="rectangular"
+                    width={480}
+                    height={500}
+                    animation="wave"
+                  />
                 </Grid>
-                <Grid item md={3} xs={12}>
-                <List>
-                <ListItem>
-                <Skeleton width="100%"  height={20} animation="wave" />
-
-                </ListItem>
-                <ListItem>
-                <Skeleton width="100%" height={20} animation="wave" />
-
-                </ListItem>
-                <ListItem>
-                <Skeleton  width="100%" height={20} animation="wave" />
-
-                </ListItem>
-                <ListItem>
-                <Skeleton width="100%" height={20} animation="wave" />
-
-                </ListItem>
-                <ListItem>
-                <Skeleton width="100%" height={60} animation="wave" />
-
-                </ListItem>
-              </List>
+                <Grid item md={3} xs={12} style={{ marginTop: 30 }}>
+                  <List>
+                    <ListItem>
+                      <Skeleton width="100%" height={20} animation="wave" />
+                    </ListItem>
+                    <ListItem>
+                      <Skeleton width="100%" height={20} animation="wave" />
+                    </ListItem>
+                    <ListItem>
+                      <Skeleton width="100%" height={20} animation="wave" />
+                    </ListItem>
+                    <ListItem>
+                      <Skeleton width="100%" height={20} animation="wave" />
+                    </ListItem>
+                    <ListItem>
+                      <Skeleton width="100%" height={60} animation="wave" />
+                    </ListItem>
+                  </List>
                 </Grid>
-                <Grid item md={3} xs={12}>
-                <List>
-                <ListItem>
-                <Skeleton width="100%" height={400} animation="wave" />
-                </ListItem>
-              </List>
+                <Grid item md={3} xs={12} style={{ marginTop: -40 }}>
+                  <Skeleton width="100%" height={300} animation="wave" />
                 </Grid>
-                </Grid>
-              </>
-            )
-          }
-          
+              </Grid>
+            </>
+          )}
         </Container>
       </ThemeProvider>
     );
