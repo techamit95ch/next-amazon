@@ -14,18 +14,20 @@ import {
   Button,
 } from '@material-ui/core';
 import useStyles from '../../utils/styles';
-export default function ProductScreen() {
+import db from '../../utils/db';
+import Product from '../../models/Products';
+export default function ProductScreen({product}) {
   const classes = useStyles();
-  const router = useRouter();
-  const { slug } = router.query;
-  const product = data.products.find((a) => a.slug === slug);
+  // const router = useRouter();
+  // const { slug } = router.query;
+  // const product = data.products.find((a) => a.slug === slug);
   //   console.log(product);
   if (!product) {
     return <>{/* <Typography>{`Product Not Found`}</Typography> */}</>;
   } else
     return (
       <>
-        <Layout title={product.name} description={product.description}>
+        <Layout title={product.name} description={product.description} page={'slug'}>
           <div className={classes.section}>
             <NextLink href={'../'} passHref>
               <Link>Back to Previous</Link>
@@ -37,7 +39,7 @@ export default function ProductScreen() {
                 src={product.image}
                 alt={product.name}
                 width={480}
-                height={640}
+                height={500}
                 layout="responsive"
               ></Image>
             </Grid>
@@ -112,4 +114,17 @@ export default function ProductScreen() {
         </Layout>
       </>
     );
+}
+export async function getServerSideProps(context) {
+  const {params} = context;
+  const {slug} = params;
+  await db.connect();
+  // Product
+  const product = await Product.findOne({slug}).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: db.convertDocToObject(product),
+    },
+  };
 }
