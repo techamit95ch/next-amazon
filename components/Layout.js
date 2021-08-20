@@ -12,6 +12,7 @@ import {
   Grid,
   List,
   ListItem,
+  Badge,
 } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
@@ -23,14 +24,14 @@ import Cookies from 'js-cookie';
 import { Store } from '../utils/Store';
 function Layout({ page, title, description, children }) {
   const { state, dispatch } = useContext(Store);
-  const { darkMode } = state;
+  const { darkMode, cart } = state;
   const [ready, setReady] = React.useState(false);
-
+  // console.log(cart);
   useEffect(() => {
     setTimeout(() => {
       setReady(true);
     }, 2000);
-  }, [ready]);
+  }, [dispatch, ready, cart]);
 
   const theme = createTheme({
     palette: {
@@ -131,26 +132,51 @@ function Layout({ page, title, description, children }) {
                     animation="wave"
                   />
                 </Grid>
-                <Grid item md={3} xs={12} style={{ marginTop: 30 }}>
+                <Grid item md={3} sm={12} xs={12}>
                   <List>
                     <ListItem>
-                      <Skeleton width="100%" height={20} animation="wave" />
+                      <Skeleton
+                        width="80%"
+                        style={{ marginLeft: 40 }}
+                        height={20}
+                        animation="wave"
+                      />
                     </ListItem>
                     <ListItem>
-                      <Skeleton width="100%" height={20} animation="wave" />
+                      <Skeleton
+                        width="80%"
+                        style={{ marginLeft: 40 }}
+                        height={20}
+                        animation="wave"
+                      />
                     </ListItem>
                     <ListItem>
-                      <Skeleton width="100%" height={20} animation="wave" />
+                      <Skeleton
+                        width="80%"
+                        style={{ marginLeft: 40 }}
+                        height={20}
+                        animation="wave"
+                      />
                     </ListItem>
                     <ListItem>
-                      <Skeleton width="100%" height={20} animation="wave" />
+                      <Skeleton
+                        width="80%"
+                        style={{ marginLeft: 40 }}
+                        height={20}
+                        animation="wave"
+                      />
                     </ListItem>
                     <ListItem>
-                      <Skeleton width="100%" height={60} animation="wave" />
+                      <Skeleton
+                        width="80%"
+                        style={{ marginLeft: 40 }}
+                        height={60}
+                        animation="wave"
+                      />
                     </ListItem>
                   </List>
                 </Grid>
-                <Grid item md={3} xs={12} style={{ marginTop: -40 }}>
+                <Grid item md={3} sm={12} xs={12} style={{ marginTop: -40 }}>
                   <Skeleton width="100%" height={300} animation="wave" />
                 </Grid>
               </Grid>
@@ -182,7 +208,18 @@ function Layout({ page, title, description, children }) {
                 onChange={darkModeChangeHandler}
               ></Switch>
               <NextLink href="/cart" passHref>
-                <Link>Cart</Link>
+                <Link>
+                  {cart.cartItems.length > 0 ? (
+                    <Badge
+                      badgeContent={cart.cartItems.length}
+                      color="secondary"
+                    >
+                      Cart
+                    </Badge>
+                  ) : (
+                    'Cart'
+                  )}
+                </Link>
                 {/* Cart */}
               </NextLink>
               <NextLink href="/login" passHref>
